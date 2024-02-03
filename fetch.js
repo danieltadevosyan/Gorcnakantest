@@ -15,3 +15,21 @@ class Singleton {
     return this.#fetchData(url);
   }
 }
+
+const res = arr.reduce((acc, item) => {
+  if (acc[item.l]) {
+    acc[item.l] = [...acc[item.l], item];
+  } else {
+    acc[item.l] = [item];
+  }
+  return acc;
+}, {});
+
+console.log(res);
+
+let arr = [
+  { v: "dan", l: "dan" },
+  { v: "goq", l: "goq" },
+  { v: "mis", l: "dan" },
+  { v: "dan", l: "dan" },
+];
