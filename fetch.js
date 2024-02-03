@@ -8,7 +8,7 @@ class Singleton {
     return fetch(url)
       .then((response) => response.json())
       .then((response) => {
-        console.log(response.groupBy("userId"));
+        console.log(response.groupBy("id"));
       });
   }
   showData(url) {
@@ -16,25 +16,11 @@ class Singleton {
   }
 }
 
-// const res = arr.reduce((acc, item) => {
-//   if (acc[item.l]) {
-//     acc[item.l] = [...acc[item.l], item];
-//   } else {
-//     acc[item.l] = [item];
-//   }
-//   return acc;
-// }, {});
-
-// console.log(res);
-
-// let arr = [
-//   { v: "dan", l: "dan" },
-//   { v: "goq", l: "goq" },
-//   { v: "mis", l: "dan" },
-//   { v: "dan", l: "dan" },
-// ];
+const instance = new Singleton();
+instance.showData("https://jsonplaceholder.typicode.com/posts");
 
 Array.prototype.groupBy = function (id) {
+  console.log(this);
   let newArr = this.reduce((acc, item) => {
     if (acc[item[id]]) {
       acc[item[id]] = [...acc[item[id]], item];
@@ -45,5 +31,3 @@ Array.prototype.groupBy = function (id) {
   }, {});
   return newArr;
 };
-
-console.log(arr.groupBy("v"));
